@@ -1,0 +1,15 @@
+{
+  "name": "puppeteer-scraper",
+  "version": "1.0.0",
+  "description": "Web scraper using Puppeteer and headless Chrome",
+  "main": "scrape.js",
+  "scripts": {
+    "start": "node scrape.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.6.0"
+  },
+  "keywords": ["puppeteer", "scraper", "headless-chrome"],
+  "author": "Your Name",
+  "license": "MIT"
+}

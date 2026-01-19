@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  web-scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SCRAPE_URL: https://example.com
+    image: web-scraper:latest
+    container_name: scraper-app
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    environment:
+      - FLASK_ENV=production
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:5000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    labels:
+      - "com.example.description=Web scraping application with Puppeteer and Flask"
+      - "com.example.version=1.0.0"
+
+networks:
+  default:
+    name: scraper-network
